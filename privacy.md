@@ -3,7 +3,7 @@
 **Effective date:** 2026-06-23
 **Last updated:** 2026-06-23
 
-Mythical is a minimalist iOS calorie tracker, built and operated as a personal project by Vasyl Falach ("we", "us"). This page explains exactly what data the app touches, where it goes, and what choices you have. We keep the scope deliberately small because that's a load-bearing rule of the project — see the [Local-First Privacy](docs/wiki/principles/Local-First%20Privacy.md) principle.
+Mythical is a minimalist iOS calorie tracker, built and operated as a personal project by Vasyl Falach ("we", "us"). This page explains exactly what data the app touches, where it goes, and what choices you have. We keep the scope deliberately small — local-first by design.
 
 ## TL;DR
 
@@ -30,7 +30,7 @@ Stored on your device + synced to our database:
 - Computed daily targets (calories, protein, carbs, fat, fiber, sugar)
 - Your timezone (so the day rolls over correctly)
 
-All of this is used solely to compute your nutrition targets via the [Goal Formula](docs/wiki/architecture/Goal%20Formula.md). We don't share any of it.
+All of this is used solely to compute your daily calorie and macro targets. We don't share any of it.
 
 ### Meals you log
 
@@ -65,7 +65,7 @@ The AI Chat tab is opt-in. If you enable it, your chat messages are stored **loc
 | **OpenAI** | Meal description + the photo you took, when you use the photo flow; your chat message + a privacy-minimized snapshot of your recent meals, when you use AI chat | AI estimation of nutrition; grounded AI chat answers |
 | **DeepSeek** | Meal description text (no photos) when you use the text flow | AI estimation of nutrition |
 
-Each provider receives only what's needed for the immediate request. We do not send your full meal history to OpenAI or DeepSeek. The chat-context snapshot sent to OpenAI is privacy-minimized — it includes names, dates, calories, and macros, never photos or raw rows. See the [AI Chat Privacy Boundary](docs/wiki/decisions/AI%20Chat%20Privacy%20Boundary.md) decision for the exact contract.
+Each provider receives only what's needed for the immediate request. We do not send your full meal history to OpenAI or DeepSeek. The chat-context snapshot sent to OpenAI is privacy-minimized — it includes meal names, dates, calories, and macros, never photos or raw rows.
 
 Each provider has their own privacy policy: [Supabase](https://supabase.com/privacy), [OpenAI](https://openai.com/policies/privacy-policy), [DeepSeek](https://platform.deepseek.com/privacy), [Apple](https://www.apple.com/legal/privacy/).
 
